@@ -1,3 +1,5 @@
+//This file is here to manage the convertion of images in an ASCII char matrice
+
 #include <stdio.h>
 #include <stdlib.h>
 
