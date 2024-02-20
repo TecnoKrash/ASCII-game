@@ -2,39 +2,26 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h> /* getch() and kbhit() */
+#include "matrice.c"
+
+#define H  47
+#define L 180
 
 // The function to display the matrice on the screen
-void display(char** t; int h; int l)
+void display(screen* s)
 {
-    for (int i = 0; i < h; i++)
+    for (int i = 0; i < s->h; i++)
     {
-        for (int j = 0; j < l; j++) printf(t[i][j]);
+        for (int j = 0; j < s->l; j++) printf("%c", s->m[i][j]);
+        printf("\n");
     }
 }
 
 int main(void)
 {
-    int j = 0;
-    int i = 0;
-    while(1)
-    {
-        if (i == 25) printf("        |        |\n");
-        if (i == 24) 
-        {
-            printf("                                                                                                     |");
-            printf("         |         |         |         |         |         |01234567");
-        }
-        if (i == 26) printf("        _________\n");
-        if (i == 41) printf("%d\n",j);
-        if (i == 42)
-        {
-            j++;
-            i = 0;
-            printf("Test %d\n",j);
-            Sleep(1);
-        }
-        if (i < 42) printf(" \n");
-        i++;
-    }
+    screen* s = screen_init(H,L);
+    fill(s,'C');
+    display(s);
+    screen_free(s);
     return 0;
 }
